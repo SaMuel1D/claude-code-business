@@ -1,41 +1,26 @@
-# Aktuelle Daten
-
-> Diese Datei enthält Metriken, Datenpunkte und aktuelle Statusinformationen, die für deine Rolle und Strategie relevant sind. Sie liefert Claude konkreten Kontext für Analysen und Entscheidungsfindung.
-
----
-
-## Wie das zusammenhängt
-
-- **business-info.md** liefert den organisatorischen Kontext
-- **personal-info.md** definiert, wofür du verantwortlich bist
-- **strategy.md** beschreibt, worauf du optimierst
-- **Diese Datei** gibt Claude die Zahlen hinter der Erzählung
-
----
+# Aktuelle Daten — Stand Mai 2026
 
 ## Schlüsselmetriken
 
-[Welche Datenpunkte sind am wichtigsten für deine Arbeit? Umsatz, Nutzer, Conversion-Raten, Pipeline, Performance-Metriken?]
-
-| Metrik | Aktueller Wert | Zielwert | Notizen |
-| ------ | -------------- | -------- | ------- |
-|        |                |          |         |
-|        |                |          |         |
+| Metrik | Aktueller Wert | Zielwert | Frist |
+|--------|---------------|----------|-------|
+| Monatsumsatz | ~€22.000–23.000 | €50.000 | 31.12.2026 |
+| Team | Sandra allein | Sandra + Minijob-Mitarbeiterin | aktuell in Einstellung |
 
 ## Aktueller Stand
 
-[Qualitative Daten: Status wichtiger Projekte, kürzliche Erfolge/Misserfolge, Blocker, Team-Kapazität?]
+- Laden läuft, Umsatz stabil bei ~€22–23k/Monat
+- Coaching-Ausbildung (VAK + Impulse bei Damian Richter) läuft parallel
+- Instagram aktiv (Reels, Stories, Karussells) — mehr Produktcontent gewünscht
+- Neue Mitarbeiterin wird eingestellt (Minijob)
+- Viele Ideen vorhanden — Priorisierung und Umsetzung ist die Herausforderung
 
-## Datenquellen
+## Offene Baustellen
 
-[Woher kommen diese Daten? Nützlich für zukünftige Automatisierung.]
+- Instagram-Content skalieren (Quantität + Produktfokus)
+- E-Mail-Marketing aufbauen
+- Coaching-Angebot schärfen und vermarkten
+- Umsatzverdopplung bis Jahresende
 
 ---
-
-## Automatisierungshinweis
-
-_Diese Datei funktioniert als statischer Snapshot, kann aber mit Skripten erweitert werden, die Live-Daten ziehen. Sobald du mit dem Workspace vertraut bist, erwäge ein Skript in `scripts/` hinzuzufügen, das diese Datei aus deinen Datenquellen aktualisiert (Dashboards, APIs, Spreadsheets, etc.)._
-
----
-
-_Regelmäßig aktualisieren — veraltete Daten begrenzen Claudes Nützlichkeit als analytischer Partner._
+_Stand: Mai 2026_
