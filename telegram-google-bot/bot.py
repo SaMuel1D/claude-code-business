@@ -18,8 +18,14 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-BOT_TOKEN = os.environ["BOT_TOKEN"]
-ALLOWED_CHAT_ID = int(os.environ["TELEGRAM_CHAT_ID"])
+logger.info("Verfügbare ENV-Variablen: %s", [k for k in os.environ.keys()])
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "").strip()
+ALLOWED_CHAT_ID_STR = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN ist nicht gesetzt!")
+if not ALLOWED_CHAT_ID_STR:
+    raise ValueError("TELEGRAM_CHAT_ID ist nicht gesetzt!")
+ALLOWED_CHAT_ID = int(ALLOWED_CHAT_ID_STR)
 
 
 def authorized(update: Update) -> bool:
