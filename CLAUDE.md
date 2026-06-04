@@ -55,6 +55,7 @@ Claude sollte sich immer über `/prime` am Session-Start orientieren, dann mit v
 | `outputs/`   | Deliverables, Analysen, Reports, Session-Logs aus `/shutdown`.                               |
 | `reference/` | Hilfreiche Dokumentation, Vorlagen und Patterns für verschiedene Workflows.                  |
 | `scripts/`   | Automatisierungs- und Tooling-Skripte.                                                       |
+| `content-ideen/` | Alle Content- und Business-Ideen (Reels, Stories, Karussells, Produktideen). Zentrale Ideensammlung, jederzeit erweiterbar. |
 
 ---
 
