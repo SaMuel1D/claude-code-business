@@ -143,6 +143,11 @@ Um diesen Workspace an deine eigenen Bedürfnisse anzupassen, fülle deine Konte
 
 ---
 
+## Sprache
+
+- **Session-Titel immer auf Deutsch** — wenn Claude automatisch einen Titel für eine neue Session vergibt, muss dieser auf Deutsch sein
+- Alle Antworten, Dateinamen und Outputs auf Deutsch, sofern der User nicht explizit etwas anderes anfragt
+
 ## Notizen
 
 - Kontext minimal aber ausreichend halten — kein Bloat
