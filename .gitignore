@@ -1,4 +1,11 @@
 .DS_Store
 *.DS_Store
 .claude/sessions/
+.claude/worktrees/
 tool-results/
+*.env
+instagram-monitor-bot/venv/
+instagram-monitor-bot/state.json
+reference/Pinker Ordner Familie Bär/10. Preislisten Konditionen/Preislisten.zip
+reference/Pinker Ordner Familie Bär/11. Reparaturen Reklamationen/11. Reparaturen und Reklamationen.zip
+reference/Pinker Ordner Familie Bär/11. Reparaturen Reklamationen/Reparaturen und Reklamationen/Axkid Star/Video Axkid One Konnektoren.mp4

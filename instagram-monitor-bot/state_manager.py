@@ -1,6 +1,7 @@
 import json
 import os
 from datetime import datetime
+from typing import Optional
 from config import STATE_FILE
 
 
@@ -16,7 +17,7 @@ def save_state(state: dict):
         json.dump(state, f, ensure_ascii=False, indent=2, default=str)
 
 
-def get_last_seen(state: dict, account: str) -> str | None:
+def get_last_seen(state: dict, account: str) -> Optional[str]:
     return state.get(account, {}).get("last_post_shortcode")
 
 

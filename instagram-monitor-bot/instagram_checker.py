@@ -1,6 +1,7 @@
 import instaloader
 import logging
 from datetime import datetime, timezone
+from typing import Optional
 from config import INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD
 
 logger = logging.getLogger(__name__)
@@ -30,7 +31,7 @@ def get_loader() -> instaloader.Instaloader:
     return _loader
 
 
-def fetch_new_posts(account: str, last_shortcode: str | None, max_posts: int = 10) -> list[dict]:
+def fetch_new_posts(account: str, last_shortcode: Optional[str], max_posts: int = 10) -> list[dict]:
     """Gibt neue Posts zurück, die nach last_shortcode erschienen sind."""
     loader = get_loader()
     new_posts = []
