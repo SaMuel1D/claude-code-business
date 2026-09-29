@@ -42,6 +42,19 @@ Ideen für kurze Videos auf Instagram. Format: 15–60 Sek.
 
 ---
 
+### 🎬 Serie „Einfach sicher sein" — 5 Reels (Kaufen kann jeder / Geheimnis / 3 Dinge / Unsicherheit)
+- **Konzept:** 5 Reels mit gemeinsamem roten Faden: Der Unterschied liegt nicht im Sitz, sondern darin, wie er zu Kind und Auto passt. Ausgearbeitete Skripte siehe Chat vom 29.09.2026, Kurzfassung:
+  1. **Kaufen kann jeder** — Hook: *„Einen Kindersitz kaufen kann jeder. Aber weißt du auch, ob er in deinem Auto zu deinem Kind passt?"* → Karton wegstellen, 3 Checks zeigen (Gurtverlauf, Kopfstütze, Einbau im eigenen Auto)
+  2. **Geheimnis entspannter Autofahrten** — Hook: *„Das Geheimnis von entspannten Autofahrten hat erstaunlich wenig mit Spielzeug zu tun."* → Weinendes Kind (POV) → Auflösung: Liegewinkel, Kopfstütze, Gurt
+  3. **3 Dinge beim Kindersitzkauf** — Hook: *„Drei Dinge, die ich beim Kindersitzkauf heute nie wieder machen würde."* → ohne Kind/Auto kaufen, nur auf Empfehlung kaufen, nach Alter statt Größe wählen (Countdown 3→1, Stärkstes zuletzt)
+  4. **Kind hasst Autofahren** — Hook: *„Dein Kind schreit, sobald es im Autositz sitzt? Dann schau dir diese drei Dinge an."* → dicke Jacke, Sitz zu eng geworden, kein Blickkontakt
+  5. **Unsicherheit nach dem Kauf** — Hook (POV): *„Du hast den Kindersitz längst gekauft, und trotzdem liegst du abends wach und fragst dich, ob es der richtige war."* → Entlastung: meistens war die Wahl gar nicht falsch → Sitz-Check
+- **Ziel:** Beratung als Mehrwert zeigen, Vertrauen, Leads (DM-Keyword)
+- **Status:** Idee — Skripte ausgearbeitet
+- **Erfasst:** September 2026
+
+---
+
 ## Umgesetzte Reels
 
 _(Hier Reels eintragen, sobald sie veröffentlicht sind — mit Datum und ggf. Performance-Notiz)_
