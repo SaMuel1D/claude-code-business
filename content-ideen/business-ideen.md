@@ -39,6 +39,22 @@ Ideen für neue Produkte, Angebote oder Geschäftsmodelle — noch nicht umgeset
 
 ---
 
+### 💡 Digitales Produkt: „Mein Kind schreit im Auto“ ⭐
+- **Was:** E-Book + 3–5 kurze Videos (Mini-Kurs, 27–47 €) — Sitz-Check zum Mitmachen am eigenen Auto
+- **Warum:** Akuter Schmerz, wird aktiv gegoogelt → Traffic über Google/Pinterest/YouTube, unabhängig von Instagram-Reichweite. Einzige Nische, in der Sandra alle drei Ursachen-Ebenen abdeckt:
+  1. Technik (Sitzwinkel, Gurt, Hitze, Kopf kippt, Sitz passt nicht)
+  2. Körper (Kinderkrankenschwester: Reflux, Müdigkeitsfenster, Hunger, Reizüberflutung)
+  3. Mama (Anspannung überträgt sich → *„Ruhige Mama, ruhiges Kind“*)
+- **Produktleiter:** Gratis-Checkliste „7 Gründe, warum dein Baby im Auto weint“ (E-Mail-Liste) → Mini-Kurs → Meditation (Upsell) → Beratung Laden/online → Coaching
+- **Zusatz-Vertrieb:** Aufsteller an der Ladenkasse
+- **Realistische Erwartung:** Bis Dez. 2026 einige hundert €/Monat — Baustein für 2027, nicht für das 50k-Ziel
+- **Vor dem Schreiben validieren (1 Woche):** Story-Umfrage „Weint dein Kind beim Autofahren?“, Kundinnen im Laden 2 Wochen fragen, bei Resonanz Warteliste für Checkliste
+- **Bewusst zurückgestellt:** Erschöpfung/Schlaf als Erstprodukt (überfüllter Markt, Heilmittelwerbegesetz-Risiko)
+- **Status:** Idee mit Konzept — Validierung als nächster Schritt
+- **Erfasst:** Oktober 2026
+
+---
+
 ## Umgesetzte Ideen
 
 _(Hier eintragen, wenn eine Idee umgesetzt wurde — mit Datum und Ergebnis)_
