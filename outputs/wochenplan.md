@@ -29,7 +29,6 @@ _Stand: 05.10.2026_
 ### Freitag
 - 💼 09:00–12:00 Arbeit
 - 📚 **13:30–14:00 Sales Masterclass** (30 Min.)
-- 📚 **14:00–14:30 Einwandbehandlung** (30 Min.)
 - 💼 15:00–18:00 Arbeit
 
 ### Samstag
@@ -37,7 +36,8 @@ _Stand: 05.10.2026_
 - danach frei
 
 ### Sonntag
-- 🔲 **09:30–10:30 alfima** (Platzhalter, startet bald)
+- 📚 **09:30–10:00 Einwandbehandlung** (30 Min.)
+- 🔲 **10:00–11:00 alfima** (Platzhalter, startet bald)
 
 ## Summen pro Woche
 
