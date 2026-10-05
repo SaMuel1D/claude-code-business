@@ -1,0 +1,217 @@
+<title>Sandras Wochenplan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: Wochenraster 8–19 Uhr, Blöcke nach Uhrzeit positioniert; am Handy Tagesliste */
+:root {
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --fg: #1c2a44;
+  --muted: #5d6b82;
+  --line: #e1e6ee;
+  --call: #1E3A6E;
+  --call-fg: #ffffff;
+  --learn: #8BC34A;
+  --learn-fg: #1f3a0c;
+  --work: #e7ebf1;
+  --work-fg: #66748a;
+  --opt: #5B9BD5;
+  --opt-bg: #e6f0fa;
+  --opt-fg: #1d4f80;
+  --today: #fdf6e3;
+  --font-display: "Bricolage Grotesque", "Arial Rounded MT Bold", Arial, sans-serif;
+  --font-body: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  --hour: 58px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1625; --surface: #161f31; --fg: #e6ecf5; --muted: #98a6bd; --line: #26324a;
+    --call: #3d66b0; --call-fg: #ffffff; --learn: #8BC34A; --learn-fg: #142808;
+    --work: #222d42; --work-fg: #8d9ab0; --opt: #6aa8e0; --opt-bg: #17304b; --opt-fg: #bcdaf5;
+    --today: #1f2638; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1625; --surface: #161f31; --fg: #e6ecf5; --muted: #98a6bd; --line: #26324a;
+  --call: #3d66b0; --call-fg: #ffffff; --learn: #8BC34A; --learn-fg: #142808;
+  --work: #222d42; --work-fg: #8d9ab0; --opt: #6aa8e0; --opt-bg: #17304b; --opt-fg: #bcdaf5;
+  --today: #1f2638; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 48px; display: grid; gap: 28px; }
+header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; }
+h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 40px); line-height: 1.05; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: 20px; margin: 0 0 12px; }
+.sub { color: var(--muted); margin: 6px 0 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+.sw.call { background: var(--call); }
+.sw.learn { background: var(--learn); }
+.sw.work { background: var(--work); border: 1px solid var(--line); }
+.sw.opt { background: var(--opt-bg); border: 1.5px dashed var(--opt); }
+
+.totals { display: flex; flex-wrap: wrap; gap: 10px; }
+.total { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; font-size: 14px; }
+.total b { font-family: var(--font-display); font-size: 18px; font-variant-numeric: tabular-nums; margin-right: 4px; }
+
+/* Raster */
+.grid-scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.grid { display: grid; grid-template-columns: 52px repeat(7, minmax(110px, 1fr)); min-width: 860px; }
+.dayhead { padding: 12px 8px 10px; text-align: center; font-weight: 600; border-bottom: 1px solid var(--line); border-left: 1px solid var(--line); }
+.dayhead small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+.dayhead.today, .col.today { background: var(--today); }
+.corner { border-bottom: 1px solid var(--line); }
+.times { position: relative; }
+.times div { height: var(--hour); font-size: 12px; color: var(--muted); text-align: right; padding-right: 8px; transform: translateY(-8px); font-variant-numeric: tabular-nums; }
+.col { position: relative; border-left: 1px solid var(--line);
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--hour) - 1px), var(--line) calc(var(--hour) - 1px), var(--line) var(--hour)); }
+.ev { position: absolute; left: 4px; right: 4px; border-radius: 7px; padding: 3px 7px; font-size: 12.5px; line-height: 1.25; overflow: hidden; }
+.ev b { font-weight: 600; display: block; }
+.ev .t { font-size: 11.5px; opacity: .85; font-variant-numeric: tabular-nums; }
+.ev.short b, .ev.short .t { display: inline; }
+.ev.short .t { margin-left: 4px; }
+.ev.call { background: var(--call); color: var(--call-fg); z-index: 2; }
+.ev.learn { background: var(--learn); color: var(--learn-fg); z-index: 2; }
+.ev.opt { background: var(--opt-bg); color: var(--opt-fg); border: 1.5px dashed var(--opt); z-index: 2; }
+.ev.work { background: var(--work); color: var(--work-fg); left: 0; right: 0; border-radius: 0; z-index: 1; }
+.ev.work.under { padding-top: 3px; }
+.ev.on-work { left: 14px; box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+
+/* Handy-Liste */
+.agenda { display: none; gap: 14px; }
+.aday { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.aday.today { background: var(--today); }
+.aday h3 { font-family: var(--font-display); font-weight: 600; font-size: 17px; margin: 0 0 8px; }
+.aitem { display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: center; padding: 5px 0; font-size: 14px; }
+.aitem .t { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+.pill { border-radius: 7px; padding: 4px 9px; min-width: 0; }
+.pill.call { background: var(--call); color: var(--call-fg); }
+.pill.learn { background: var(--learn); color: var(--learn-fg); }
+.pill.work { background: var(--work); color: var(--work-fg); }
+.pill.opt { background: var(--opt-bg); color: var(--opt-fg); border: 1.5px dashed var(--opt); }
+.free { color: var(--muted); font-size: 14px; }
+
+@media (max-width: 720px) {
+  .grid-scroll { display: none; }
+  .agenda { display: grid; }
+}
+
+.cols2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; min-width: 0; }
+.rules { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.later { display: flex; flex-wrap: wrap; gap: 8px; }
+.later span { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 13.5px; background: var(--bg); }
+.note { color: var(--muted); font-size: 13.5px; margin: 0 0 12px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Meine Woche</h1>
+      <p class="sub">Feste Live Calls, feste Lernblöcke. Abends ist Familienzeit.</p>
+    </div>
+    <div class="legend" aria-label="Legende">
+      <span><i class="sw call"></i>Live Call</span>
+      <span><i class="sw learn"></i>Lernblock</span>
+      <span><i class="sw work"></i>Arbeit</span>
+      <span><i class="sw opt"></i>Optional / Platzhalter</span>
+    </div>
+  </header>
+
+  <div class="totals">
+    <div class="total"><b>7</b>Std. Live Calls</div>
+    <div class="total"><b>3,5</b>Std. Lernen</div>
+    <div class="total"><b>1</b>Std. alfima (bald)</div>
+  </div>
+
+  <div class="grid-scroll"><div class="grid" id="grid"></div></div>
+  <div class="agenda" id="agenda"></div>
+
+  <div class="cols2">
+    <section class="card">
+      <h2>Regeln für diesen Plan</h2>
+      <ul class="rules">
+        <li><b>Lernblöcke sind feste Termine.</b> Was im Block nicht klappt, wandert nicht in den Abend.</li>
+        <li><b>Abende bleiben frei</b> (außer den Calls bis 19 Uhr).</li>
+        <li><b>Ein neuer Kurs kommt erst dazu, wenn ein aktueller fertig ist.</b></li>
+        <li>Damian Richter: live wenn möglich, sonst Aufzeichnung am Mittwoch.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2>Kurse für später</h2>
+      <p class="note">Nicht eingeplant. Nur zur Erinnerung für freie Zeiten.</p>
+      <div class="later">
+        <span>Thore Friedrichs</span><span>Claude Code Mastery</span><span>Identity Shift</span>
+        <span>Nachbereitung live Workshops</span><span>Verkaufsmastery EdL</span><span>Akompani Trageschule</span>
+        <span>Investment/Immobilien</span><span>Diamond Angels</span><span>Kheder Ali</span>
+        <span>Moroselia passives Einkommen</span><span>Steffi Christian Kurs Raupe</span><span>Airbnb Skool</span>
+        <span>artgerecht</span><span>Automaten Academy</span><span>Emotionscode</span>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+const START = 8, END = 19;
+const days = [
+  { n: "Montag", s: "Mo", ev: [
+    ["learn", 9, 10.5, "Leady"],
+    ["work", 15, 18, "Arbeit"],
+    ["call", 18, 19, "Marketing&Business"] ] },
+  { n: "Dienstag", s: "Di", ev: [
+    ["work", 10, 17, "Arbeit"],
+    ["call", 11, 12, "Damian Richter Coach Call", "live wenn möglich"],
+    ["call", 18, 19, "Social Media Club"] ] },
+  { n: "Mittwoch", s: "Mi", ev: [
+    ["call", 9, 10, "Impuls Coach Call"],
+    ["call", 10, 11, "Marketing&Business"],
+    ["learn", 11.5, 12.5, "Online-Kurs / Minikurs erstellen"],
+    ["opt", 12.5, 13.5, "Aufzeichnung Damian Richter", "nur falls Di verpasst"],
+    ["call", 18, 19, "VAK Coach"] ] },
+  { n: "Donnerstag", s: "Do", ev: [
+    ["work", 9, 13, "Arbeit"],
+    ["call", 18, 19, "Impuls Coach Call"] ] },
+  { n: "Freitag", s: "Fr", ev: [
+    ["work", 9, 12, "Arbeit"],
+    ["learn", 13, 13.5, "Sales Masterclass"],
+    ["work", 15, 18, "Arbeit"] ] },
+  { n: "Samstag", s: "Sa", ev: [
+    ["work", 9, 16, "Arbeit"] ] },
+  { n: "Sonntag", s: "So", ev: [
+    ["learn", 9.5, 10, "Einwandbehandlung"],
+    ["opt", 10, 11, "alfima", "Platzhalter, startet bald"] ] }
+];
+const fmt = h => String(Math.floor(h)).padStart(2, "0") + ":" + (h % 1 ? "30" : "00");
+const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const todayIdx = (new Date().getDay() + 6) % 7;
+const hourPx = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--hour")) || 58;
+
+const grid = document.getElementById("grid");
+let html = '<div class="corner"></div>';
+days.forEach((d, i) => html += `<div class="dayhead${i === todayIdx ? " today" : ""}">${d.n}</div>`);
+html += '<div class="times">';
+for (let h = START; h < END; h++) html += `<div>${h === START ? "" : fmt(h)}</div>`;
+html += "</div>";
+const hp = hourPx();
+days.forEach((d, i) => {
+  html += `<div class="col${i === todayIdx ? " today" : ""}" style="height:${(END - START) * hp}px">`;
+  d.ev.forEach(([type, a, b, title, note]) => {
+    const top = (a - START) * hp, h = (b - a) * hp;
+    const onWork = type !== "work" && d.ev.some(e => e[0] === "work" && e[1] < b && e[2] > a);
+    const short = b - a <= 0.5;
+    html += `<div class="ev ${type}${short ? " short" : ""}${onWork ? " on-work" : ""}" style="top:${top + 1}px;height:${h - 2}px">`
+      + `<b>${esc(title)}</b><span class="t">${fmt(a)}–${fmt(b)}${note && !short ? " · " + esc(note) : ""}</span></div>`;
+  });
+  html += "</div>";
+});
+grid.innerHTML = html;
+
+const agenda = document.getElementById("agenda");
+agenda.innerHTML = days.map((d, i) => {
+  const items = [...d.ev].sort((x, y) => x[1] - y[1]).map(([type, a, b, title, note]) =>
+    `<div class="aitem"><span class="t">${fmt(a)}–${fmt(b)}</span><span class="pill ${type}">${esc(title)}${note ? " · " + esc(note) : ""}</span></div>`).join("");
+  return `<div class="aday${i === todayIdx ? " today" : ""}"><h3>${d.n}</h3>${items || '<p class="free">frei</p>'}</div>`;
+}).join("");
+</script>
