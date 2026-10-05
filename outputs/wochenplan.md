@@ -54,3 +54,23 @@ _Stand: 05.10.2026_
 - **Lernblöcke sind feste Termine.** Was nicht im Block passiert, wird nicht in den Abend geschoben.
 - **Abende bleiben bewusst frei** (außer den fixen Calls bis 19 Uhr). Dann ist Zeit für die Familie.
 - **Neue Kurse kommen nur dazu, wenn ein Platz dafür frei ist.** Sonst muss ein anderer Block weichen.
+
+## Kurse für später (nicht eingeplant)
+
+_Nur zur Erinnerung für freie Zeiten. Diese Kurse sind bewusst nicht fest eingeplant._
+
+- [ ] Thore Friedrichs
+- [ ] Claude Code Mastery
+- [ ] Identity Shift
+- [ ] Nachbereitung live Workshops
+- [ ] Verkaufsmastery EdL
+- [ ] Akompani Trageschule
+- [ ] Investment/Immobilien
+- [ ] Diamond Angels
+- [ ] Kheder Ali
+- [ ] Moroselia passives Einkommen
+- [ ] Steffi Christian Kurs Raupe
+- [ ] Airbnb Skool
+- [ ] artgerecht
+- [ ] Automaten Academy
+- [ ] Emotionscode
