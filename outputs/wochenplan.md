@@ -20,6 +20,7 @@ _Stand: 05.10.2026_
 - 📞 09:00–10:00 Impuls Coach Call
 - 📞 10:00–11:00 Marketing&Business
 - 📚 **11:30–12:30 Online-Kurs / Minikurs erstellen** (1 Std.)
+- 🔲 **12:30–13:30 Aufzeichnung Damian Richter** (nur falls Dienstag nicht live dabei)
 - 📞 18:00–19:00 VAK Coach
 
 ### Donnerstag
