@@ -13,7 +13,7 @@ _Stand: 05.10.2026_
 
 ### Dienstag
 - 💼 10:00–17:00 Arbeit
-- 📞 11:00–12:00 Damian Richter Coach Call _(liegt in der Arbeitszeit!)_
+- 📞 11:00–12:00 Damian Richter Coach Call _(live wenn möglich, sonst Aufzeichnung)_
 - 📞 18:00–19:00 Social Media Club
 
 ### Mittwoch
@@ -28,7 +28,7 @@ _Stand: 05.10.2026_
 
 ### Freitag
 - 💼 09:00–12:00 Arbeit
-- 📚 **13:30–14:00 Sales Masterclass** (30 Min.)
+- 📚 **13:00–13:30 Sales Masterclass** (30 Min.)
 - 💼 15:00–18:00 Arbeit
 
 ### Samstag
