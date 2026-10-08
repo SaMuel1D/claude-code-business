@@ -55,6 +55,14 @@ Ideen für kurze Videos auf Instagram. Format: 15–60 Sek.
 
 ---
 
+### 🎬 Serie „Autofahren mit schreiendem Baby" — 4 Reels + Story-Sequenz
+- **Konzept:** 4 Fragen-Hooks (genießen / immer noch schreiend / Nervensystem / Angst größer als Termin) → konkrete Ursachen (Liegewinkel, Gurt, Sitzgröße) → DM-Keyword **RUHE**. Skripte, Captions + 6 Story-Slides: `outputs/reels-stories-schreibaby-autofahrt-2026-10-08.md`
+- **Ziel:** Leads für Sitz-Check, Vertrauen
+- **Status:** Skripte ausgearbeitet
+- **Erfasst:** Oktober 2026
+
+---
+
 ## Umgesetzte Reels
 
 _(Hier Reels eintragen, sobald sie veröffentlicht sind — mit Datum und ggf. Performance-Notiz)_
