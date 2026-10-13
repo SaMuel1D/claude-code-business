@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Aushang Anlieferung</title>
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; background: #fff; }
+  body { font-family: "Helvetica Neue", Arial, "Arial Unicode MS", sans-serif; color: #1F2A44; }
+  .page { width: 210mm; height: 297mm; padding: 9mm 12mm; display: flex; flex-direction: column; }
+  .top { background: #1F2A44; color: #fff; border-radius: 6mm; padding: 4mm 8mm; text-align: center; }
+  .top .icon { font-size: 10mm; line-height: 1; }
+  .top h1 { font-size: 11mm; letter-spacing: 0.5mm; margin-top: 2mm; }
+  .top .sub { font-size: 5.5mm; margin-top: 1.5mm; color: #DCEBF7; }
+  .mid { display: grid; grid-template-columns: 1fr 78mm; gap: 4mm; margin-top: 4mm; }
+  .addr { border: 1.4mm solid #8BC34A; border-radius: 6mm; padding: 4mm; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+  .addr .arrow { font-size: 10mm; color: #8BC34A; line-height: 1; }
+  .addr .street { font-size: 12mm; font-weight: 800; line-height: 1.1; }
+  .addr .city { font-size: 7mm; font-weight: 600; margin-top: 1.5mm; }
+  .addr .vosen { font-size: 7mm; margin-top: 3mm; background: #1F2A44; color: #fff; border-radius: 3mm; padding: 1.5mm 3mm; }
+  .addr .vosen strong { color: #8BC34A; letter-spacing: 0.5mm; }
+  .map { width: 78mm; height: 78mm; display: block; }
+  .route { margin: 3mm 0 3mm; text-align: center; font-size: 3.8mm; font-weight: 700; background: #F1F8E9; border-radius: 3mm; padding: 2mm; }
+  .langs { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; align-content: start; }
+  .l { background: #EAF4FB; border-left: 2mm solid #8BC34A; border-radius: 2mm; padding: 1.8mm 3mm; font-size: 3.7mm; line-height: 1.3; }
+  .l b { display: block; font-size: 3mm; text-transform: uppercase; letter-spacing: 0.4mm; color: #5B7A99; margin-bottom: 0.6mm; }
+  .l.rtl { direction: rtl; text-align: right; border-left: none; border-right: 2mm solid #8BC34A; }
+  .foot { text-align: center; font-size: 4.5mm; margin-top: 3mm; font-weight: 600; }
+  .foot span { color: #8BC34A; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <div class="icon">📦</div>
+    <h1>PAKETE · PARCELS</h1>
+    <div class="sub">Außerhalb der Öffnungszeiten bitte hier anliefern</div>
+  </div>
+
+  <div class="mid">
+    <div class="addr">
+      <div class="arrow">➜</div>
+      <div class="street">Widukind&shy;straße 50</div>
+      <div class="city">33098 Paderborn</div>
+      <div class="vosen">bei / at <strong>VOSEN</strong></div>
+    </div>
+    <svg class="map" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <rect width="300" height="300" rx="16" fill="#EAF4FB"/>
+      <!-- Straßen -->
+      <rect x="185" y="20" width="44" height="270" fill="#9AA7B8"/>
+      <rect x="20" y="70" width="209" height="44" fill="#9AA7B8"/>
+      <line x1="207" y1="120" x2="207" y2="285" stroke="#fff" stroke-width="3" stroke-dasharray="10 9"/>
+      <line x1="25" y1="92" x2="180" y2="92" stroke="#fff" stroke-width="3" stroke-dasharray="10 9"/>
+      <!-- Route -->
+      <path d="M207 272 L207 92 L78 92" fill="none" stroke="#8BC34A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M86 78 L62 92 L86 106 Z" fill="#8BC34A"/>
+      <!-- Start -->
+      <circle cx="207" cy="272" r="11" fill="#1F2A44"/>
+      <text x="178" y="276" text-anchor="end" font-size="13" font-weight="700" fill="#1F2A44">HIER / HERE</text>
+      <!-- Ampel -->
+      <rect x="252" y="78" width="20" height="50" rx="5" fill="#1F2A44"/>
+      <circle cx="262" cy="89" r="5.5" fill="#E53935"/>
+      <circle cx="262" cy="103" r="5.5" fill="#FBC02D"/>
+      <circle cx="262" cy="117" r="5.5" fill="#8BC34A"/>
+      <text x="262" y="145" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A44">AMPEL</text>
+      <text x="262" y="159" text-anchor="middle" font-size="10" fill="#5B7A99">traffic light</text>
+      <!-- Schritte -->
+      <text x="238" y="215" font-size="22" font-weight="800" fill="#1F2A44">1</text>
+      <text x="236" y="234" font-size="10" fill="#1F2A44">geradeaus</text>
+      <text x="236" y="246" font-size="10" fill="#5B7A99">straight</text>
+      <text x="135" y="62" text-anchor="middle" font-size="14" font-weight="800" fill="#1F2A44">2 · links / left ⟵</text>
+      <text x="135" y="134" text-anchor="middle" font-size="16" font-weight="800" fill="#1F2A44">50 m</text>
+      <!-- Ziel -->
+      <path d="M45 70 C25 70 22 45 45 22 C68 45 65 70 45 70 Z" transform="translate(0,-4)" fill="#E53935"/>
+      <circle cx="45" cy="44" r="7" fill="#fff"/>
+      <rect x="18" y="150" width="140" height="60" rx="8" fill="#1F2A44"/>
+      <text x="88" y="173" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Widukindstr. 50</text>
+      <text x="88" y="196" text-anchor="middle" font-size="16" font-weight="800" fill="#8BC34A">VOSEN</text>
+      <line x1="45" y1="118" x2="45" y2="150" stroke="#1F2A44" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="route">Straße runter ➜ an der Ampel links ➜ 50 m <br>Down the street ➜ left at the traffic light ➜ 50 m</div>
+
+  <div class="langs">
+    <div class="l"><b>Deutsch</b>Außerhalb der Öffnungszeiten bitte in der Widukindstraße 50 (bei Vosen) anliefern: Straße runter, an der Ampel links, 50 m.</div>
+    <div class="l"><b>English</b>Outside opening hours, please deliver to Widukindstraße 50 (at Vosen): down the street, left at the traffic light, 50 m.</div>
+    <div class="l"><b>Türkçe</b>Çalışma saatleri dışında lütfen Widukindstraße 50 (Vosen) adresine teslim edin: yoldan aşağı, trafik ışığından sola, 50 m.</div>
+    <div class="l"><b>Polski</b>Poza godzinami otwarcia prosimy o dostawę na adres Widukindstraße 50 (u Vosen): prosto ulicą, na światłach w lewo, 50 m.</div>
+    <div class="l"><b>Русский</b>В нерабочее время, пожалуйста, доставляйте по адресу Widukindstraße 50 (у Vosen): прямо по улице, на светофоре налево, 50 м.</div>
+    <div class="l"><b>Українська</b>У неробочий час, будь ласка, доставляйте за адресою Widukindstraße 50 (біля Vosen): прямо вулицею, на світлофорі ліворуч, 50 м.</div>
+    <div class="l"><b>Română</b>În afara programului, vă rugăm să livrați la Widukindstraße 50 (la Vosen): drept pe stradă, la semafor la stânga, 50 m.</div>
+    <div class="l"><b>Български</b>Извън работното време, моля, доставяйте на Widukindstraße 50 (при Vosen): направо по улицата, на светофара наляво, 50 м.</div>
+    <div class="l"><b>Bosanski · Hrvatski · Srpski</b>Izvan radnog vremena molimo dostavu na Widukindstraße 50 (kod Vosen): niz ulicu, na semaforu lijevo, 50 m.</div>
+    <div class="l rtl" lang="ar"><b>العربية</b>خارج أوقات العمل، يرجى التسليم إلى Widukindstraße 50 (عند Vosen): تابع الشارع، عند الإشارة يسارًا، 50 م.</div>
+  </div>
+
+  <div class="foot">Danke! · Thank you! · Teşekkürler! · Dziękujemy! · Спасибо! · <span>♥</span></div>
+</div>
+</body>
+</html>
