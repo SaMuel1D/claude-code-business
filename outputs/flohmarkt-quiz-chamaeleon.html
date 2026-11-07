@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Flohmarkt Quiz Chamäleon</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1F2A44; --blau: #1B4FA3; --gruen: #7CB342; --gruen-hell: #EEF6E3;
+    --hellblau: #A9CBEA; --hellblau-bg: #EDF4FB;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body { font-family: "Nunito", "Helvetica Neue", Arial, sans-serif; color: var(--navy); font-weight: 700; }
+  .page { position: relative; width: 210mm; height: 297mm; padding: 9mm 12mm 8mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  svg.ch { position: absolute; display: block; }
+  .page > *:not(.ch):not(.bubble) { position: relative; z-index: 1; }
+  .bubble { position: absolute; border-radius: 50%; opacity: .5; }
+
+  /* Kopf */
+  .head { display: flex; align-items: center; gap: 4mm; }
+  .head .logo { position: static; width: 34mm; height: 29mm; flex: none; }
+  .brand .name { font-size: 10mm; font-weight: 900; line-height: 1; color: var(--blau); }
+  .brand .tag { font-size: 5mm; font-weight: 800; color: var(--blau); margin-top: 1mm; }
+  .brand .claim { font-size: 4.6mm; font-weight: 800; color: var(--gruen); margin-top: .5mm; }
+
+  .title { margin-top: 3mm; background: var(--blau); color: #fff; border-radius: 5mm; padding: 3mm 6mm; text-align: center; }
+  .title h1 { font-size: 7.6mm; font-weight: 900; line-height: 1.1; }
+  .title .sub { font-size: 4.1mm; font-weight: 700; color: #DCEBF7; margin-top: 1mm; }
+
+  /* Fragen */
+  .qs { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm; margin-top: 4.5mm; }
+  .q { background: var(--hellblau-bg); border-radius: 3mm; padding: 3mm 3.4mm; border-left: 2mm solid var(--gruen); }
+  .q:nth-child(4n+2), .q:nth-child(4n+3) { background: var(--gruen-hell); border-left-color: var(--blau); }
+  .q h3 { font-size: 4.5mm; font-weight: 900; color: var(--blau); line-height: 1.2; margin-bottom: 1.4mm; }
+  .q h3 .n { display: inline-block; width: 6mm; height: 6mm; line-height: 6mm; text-align: center; border-radius: 50%; background: var(--blau); color: #fff; font-size: 3.6mm; margin-right: 1.2mm; }
+  .q ul { list-style: none; }
+  .q li { font-size: 3.7mm; font-weight: 700; line-height: 1.25; padding: .7mm 0 .7mm 7mm; position: relative; }
+  .q li::before { content: ""; position: absolute; left: 0; top: .8mm; width: 3.6mm; height: 3.6mm; border: .45mm solid var(--blau); border-radius: 1mm; background: #fff; }
+  .q li b { color: var(--gruen); font-weight: 900; font-size: 3.9mm; margin-left: 1mm; white-space: nowrap; }
+
+  /* Lösungswort + Suchbild */
+  .solve { display: grid; grid-template-columns: 1fr 62mm; gap: 3mm; margin-top: 4.5mm; }
+  .box { border: 1mm solid var(--gruen); border-radius: 4mm; padding: 2.5mm 3.5mm; }
+  .box h4 { font-size: 4.2mm; font-weight: 900; color: var(--blau); }
+  .box p { font-size: 3.2mm; font-weight: 700; line-height: 1.3; }
+  .letters { display: flex; gap: 2mm; margin-top: 2mm; }
+  .letters span { width: 11mm; height: 12mm; border: .6mm solid var(--blau); border-radius: 2mm; display: flex; align-items: flex-end; justify-content: center; font-size: 3mm; color: var(--hellblau); padding-bottom: .5mm; background: #fff; }
+  .kids { border-color: var(--blau); background: var(--gruen-hell); }
+  .kids .count { display: flex; align-items: center; gap: 2mm; margin-top: 1.5mm; font-size: 3.6mm; font-weight: 900; color: var(--blau); }
+  .kids .count span { width: 13mm; height: 11mm; border: .6mm solid var(--blau); border-radius: 2mm; background: #fff; }
+
+  .reward { margin-top: 4.5mm; background: var(--gruen); color: #fff; border-radius: 4mm; padding: 2.4mm 5mm; text-align: center; font-size: 4.3mm; font-weight: 900; line-height: 1.3; }
+  .reward small { display: block; font-size: 3.2mm; font-weight: 700; }
+
+  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: .5mm solid var(--hellblau); padding-top: 2mm; font-size: 3.2mm; color: var(--blau); }
+  .foot .web { font-size: 4.4mm; font-weight: 900; }
+
+  /* Rückseite */
+  .back .top { text-align: center; }
+  .back h2 { font-size: 13mm; font-weight: 900; color: var(--blau); line-height: 1.05; }
+  .back .lead { font-size: 5.2mm; font-weight: 800; color: var(--gruen); margin-top: 2mm; }
+  .back .frame { flex: 1; margin: 6mm 0 5mm; border: 1mm dashed var(--hellblau); border-radius: 8mm; position: relative; }
+  .back .frame svg { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .back .name { display: flex; align-items: flex-end; gap: 3mm; font-size: 6mm; font-weight: 900; color: var(--blau); }
+  .back .name span { flex: 1; border-bottom: .6mm solid var(--navy); height: 8mm; }
+  .back .foot { margin-top: 5mm; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="ch" viewBox="430 480 1010 840">
+    
+    <g>
+      <g>
+        <path fill="#013b01" d="M670.7,979.3c4-11.7,10.9-18.7,18.3-22.8-67.3,2.8-161.6-11.1-168-87.8-6.4-75.8,66-189.5,153.9-218.9,12.6-20.2,97.6-149.5,199.9-141.4,47.2,3.7,52.5,55.5,47.8,99.6,0,0,307.5-248.7,427.9,246.7h0c9.9,28.5,16.5,58.6,19.3,90l26.4-.6c6.9-.2,12.4,5.7,11.6,12.8l-4.6,51.4c-1.2,14-24.1,11.5-33.8,12.2-31.5,341-446.1,357.2-446.1,152.9s116.6-154.5,193.5-94.9c11.4,8.8-1,26.4-13.1,18.8h0c-39.9-24.9-93.6,3.3-93.6,52.1,0,109.7,154.6,71.7,195-19.3,12-27,14.3-59.3.6-95.1l-36.7,1.1c-13.1,20.3-31.7,23.5-31.8,23.5-35.9,7.3-61.6-2-76.5-17.1l-150.5-1.5c-3.2,5.7-6.7,10.6-10.6,14.7-29.8,31.8-75.6,17.4-96.1-11.1l-145.4,4-102.8,89.8c-1.7,1.5-4,2.6-6.5,2.8-23.4,2.1-32.9-37.8-32.9-37.9h0c-.9-3.7,0-7.8,2.8-10.7l41.6-43.1-88.6,14.9h0c-5.1.8-10.4-1.9-12.4-6.9-11.3-26.9.9-70.2,1-70.4,1.3-4.9,5.8-8.4,11.1-8.4l199.3.6h0Z"/>
+        <path fill="#8c5843" d="M1045.5,1003.8l-109.8,1.2c-3.5,4.8-6.7,9.3-9.7,13.3l121.3,1.2c-1.4-5.2-2-10.5-1.7-15.7h0Z"/>
+        <path fill="#8c5843" d="M1178.7,1012.9l16.3-.5c-3.8-6.9-8.3-13.8-13.4-20.9-.3,8-1.4,15.1-2.9,21.4h0Z"/>
+        <polygon fill="#8c5843" points="1370.9 997.4 1381.2 996.6 1383.8 967.3 1371.1 967.7 1370.9 997.4"/>
+        <path fill="#e67f52" d="M778.7,1002.5c-8.2,23.3-37,30.9-58.4-.1l-239.9-.7c-2,9.5-4.5,25.4-2.3,38.3l112.8-19c10.8-1.8,18.1,11.4,9.9,19.6l-60.9,63.2c1.4,4.6,3.3,10.5,5.1,13.1l101.2-88.4c2.1-1.9,4.7-2.8,7.3-2.8l140.3-3.8c-1.1-6.3-.9-12.8.8-19.3h-15.9c0,0,0,0,0,0Z"/>
+        <path fill="#43923f" fill-rule="evenodd" d="M751.4,981.4c-13.5-6.9-2.9-27.3,10.5-20.4,8.8,4.6,14.2,11.3,16.9,18.6h29.4c2.9-2.7,6-5,9.5-6.9-18.2-8.1-34.6-17.6-44.3-23.5-10.4,1.3-39.2,5.9-46.3,18.8-6.6,11.9-18.4-.3-30.1,11.5l32.1.3c3.8.8,5.9,2.7,7.6,5.5,12.4,20.9,20.3,16.2,21.1,6.9.3-3.8-1.5-8-6.3-10.5h0Z"/>
+        <path fill="#9bd447" d="M814.5,907.7c13.8-5.9,22.9,15.1,9.1,21.1-7.2,3.1-15.3,6.1-24.3,8.9,15.5,8.7,36.7,19.2,56.1,24.2l18.3-32.3-24.9-36.1c-8.6-12.4,10.3-25.5,18.9-13l29,42c2.6,3.7,2.6,8.5.5,12.2l-29.4,51.9c-2.8,5-8.7,7-13.9,5.1-37.3-13.6-55.5,35.9-12.4,55.2,22.5,10,41.1.2,51.1-22l28.5-38.7c17.8-24.4,37.4-52.9,37.4-61.7,0-17.6-28.6-60.5-47.1-73.1-12.5-8.5.4-27.5,12.9-19,24.4,16.6,57.2,66.3,57.2,92s-14.2,34.4-29.7,57.5l101-1c5.6-8.7,14.3-15.8,26.1-19.7-29.9-82.8,58.1-179.7,142.1-105.6,11.3,10-3.9,27.2-15.2,17.2-73.8-65.2-141.2,40.5-93.8,101.2,9.3,11.9-8.8,26-18.1,14.1-1.6-2-3-4-4.4-6.1-38.2,9.5-25.1,68.7,43.6,55.1,0,0,10.5-1.7,18.2-14.9.4-1.7,1.2-3.3,2.3-4.7,5-11.4,7.8-29.4,3.3-57.7-2.5-11.6-2.9-16.6-7-31.6-4-14.5,18.1-20.7,22.1-6.1l5.3,21.9c163.4,176.5-37.9,328.3-139.6,288.9-29.9-11.6-50.6-38.3-50.6-83.4s15.2-56.2,39.8-71.4c-46.2,8.3-80.5,46.9-80.5,95.4,0,179.9,401.9,155.9,401.9-194.7s-48.7-204.8-123.8-269.1c-25.8,50.2-86.3,65.7-86.3,65.7,26.2-35.5,30.1-81.5,30.2-105.1-36.1-20.5-75.9-34.9-117.8-41.7,15.3,86.7-43.8,159.3-43.8,159.3,17-76.3-10.5-138-25-163.7-20.7.7-41.6,3.3-62.7,7.8-3.4,19.5-8.4,40-14.3,60.5-23.9,83-64.2,167.3-74.8,175.7-11.8,9.3-26-8.7-14.2-18,8.6-6.8,44.1-84.8,66.9-164,9.7-33.8,41.2-151.1-9.8-155.1-72.9-5.7-138.3,72.8-166,111.8,22.6-1.9,45.6,2.4,68.2,14.7,13.3,7.2,2.3,27.4-11,20.1-101.2-55.2-220.5,94.5-217.4,183.8,1.4.6,69.7,27.1,136.3,26.2,0,0-50.4,17.7-132.6-4.2,3.9,11.7,10.9,21.4,21.6,28.3,60.1,38.6,187.9,19.5,242.4-4.1h0Z"/>
+        <circle fill="#013b01" cx="707.1" cy="770.8" r="89.8"/>
+        <circle fill="#fff" cx="707.1" cy="770.8" r="73.3"/>
+        <circle fill="#013b01" cx="689.5" cy="757.1" r="42.5"/>
+        <circle fill="#fff" cx="686.7" cy="736.6" r="15.2"/>
+        <path fill="#9bd447" d="M719,743.6c1.9,4.1,2.9,8.7,2.9,13.5,0,17.9-14.5,32.4-32.4,32.4s-28.5-10.9-31.6-25.5c5.1,11.2,16.4,18.9,29.4,18.9s32.4-14.5,32.4-32.4-.3-4.7-.7-6.9h0Z"/>
+        <path fill="#9bd447" d="M952.2,605.2s246.5-39.1,360.7,185.8c0,0-80-339.7-360.7-185.8h0Z"/>
+        <path fill="#43923f" fill-rule="evenodd" d="M911.2,923.5c-58.2-72.2.2-72.2.2-72.2-12.5-8.5.4-27.5,12.9-19,24.4,16.6,57.2,66.3,57.2,92s-14.2,34.4-29.7,57.5l101-1c5.6-8.7,14.3-15.8,26.1-19.7-9.4-26.2-7.1-53.8,3.1-76.9-179.2.8-175-199.5-175-199.5-.7,2.7-1.5,5.3-2.2,8-23.9,83-64.2,167.3-74.8,175.7-11.8,9.3-26-8.7-14.2-18,7.4-5.9,35-65.2,57.1-132.4-75.4,222.8-239.2,198.6-243.3,190.9-3.4-6.5,34.1-16.2,45.1-18.9-17.5,3.9-61.7,10.2-124.4-6.4,3.9,11.7,10.9,21.4,21.6,28.3,60.1,38.6,187.9,19.5,242.4-4.1,13.8-5.9,22.9,15.1,9.1,21.1-7.2,3.1-15.3,6.1-24.3,8.9,15.5,8.7,36.7,19.2,56.1,24.2l18.3-32.3-24.9-36.1c-8.6-12.4,10.3-25.5,18.9-13l29,42c2.6,3.7,2.6,8.5.5,12.2l-29.4,51.9c-.4.7-.8,1.3-1.3,1.9,22.2-19.7,44.7-64.8,44.7-64.8h0Z"/>
+        <path fill="#43923f" fill-rule="evenodd" d="M1177.3,944c163.4,176.5-37.9,328.3-139.6,288.9-29.9-11.6-50.6-38.3-50.6-83.4s2.7-24.5,7.6-35.2c-85.9,133.6,164.7,208,248.2,45.9,62.2-120.7-3-310.5-97.4-263.3-20.6,10.3,45.7,165.6-67.7,130.2,10.1,9.6,28.4,15.4,55.2,10,0,0,10.5-1.7,18.2-14.9.4-1.7,1.2-3.3,2.3-4.7,5-11.4,7.8-29.4,3.3-57.7-2.5-11.6-2.9-16.6-7-31.6-4-14.5,18.1-20.7,22.1-6.1l5.3,21.9h0Z"/>
+        <path fill="#43923f" fill-rule="evenodd" d="M952.2,605.2s246.5-39.1,360.7,185.8c0,0-8.5-36.2-29.8-79.6-142.9-162.8-330.9-106.2-330.9-106.2h0Z"/>
+        <path fill="#ccf29f" fill-rule="evenodd" d="M558.3,865.8c-5-8.5,38.5-222.3,205.4-188.2-101.1-54.4-220,94.9-216.8,184.1.3.1,4.5,1.7,11.5,4.1h0Z"/>
+        <path fill="#ccf29f" fill-rule="evenodd" d="M714.4,642.6c32.1-41.1,90-100.5,153.9-95.5,48.7,3.8,22.1,111.2,11.2,150.2,1.1-3.7,2.2-7.3,3.3-10.9,9.7-33.8,41.2-151.1-9.8-155.1-72.9-5.7-138.3,72.8-166,111.8,2.5-.2,5-.3,7.5-.4Z"/>
+        <path fill="#ccf29f" fill-rule="evenodd" d="M1212.8,727.7c123.5,112.8,190,394.1-33.2,536.2,88.6-37.3,168.6-128.7,168.6-285.1s-48.7-204.8-123.8-269.1c-3.4,6.5-7.3,12.5-11.6,17.9h0Z"/>
+        <path fill="#ccf29f" fill-rule="evenodd" d="M1053,651.1c36.5,6.6,76.3,19.4,114.1,42.4.9-8.8,1.2-16.8,1.3-23-36.1-20.5-75.9-34.9-117.8-41.7,1.3,7.6,2.1,15.1,2.4,22.4Z"/>
+        <path fill="#ccf29f" fill-rule="evenodd" d="M992,644.7c-3.6-8.2-7.2-15.1-10.2-20.4-20.7.7-41.6,3.3-62.7,7.8-1,5.7-2.1,11.5-3.4,17.4,0,0,31.1-6.2,76.2-4.8h0Z"/>
+        <path fill="#ccf29f" fill-rule="evenodd" d="M952.2,605.2s208.5-110.2,330.9,106.2c-43.9-89.6-141.9-209.9-330.9-106.2Z"/>
+        <path fill="#ccf29f" fill-rule="evenodd" d="M1118.7,973.9c-42-49.9,1-158.1,88.9-99.8-.6-.4-1.3-.8-1.9-1.4-73.8-65.2-141.2,40.5-93.8,101.2,9.3,11.9-8.8,26-18.1,14.1-1.6-2-3-4-4.4-6.1-5,1.3-3.4-5.4-12.4,6.1-9.1,11.5,78.2,29.2,41.7-14.2h0Z"/>
+        <path fill="#ccf29f" fill-rule="evenodd" d="M874.5,1030.6c-8.4,12.6-45.8,9.7-57.2-10.1,2.2,9.8,9.8,19.8,24.3,26.3,22.5,10,41.1.2,51.1-22l28.5-38.7c17.8-24.4,37.4-52.9,37.4-61.7,0-17.6-28.6-60.5-47.1-73.1,0,0,46.2,55.6,29.5,87-16.6,31.3-57.2,78.5-66.5,92.4h0Z"/>
+        <path fill="#8c5843" fill-rule="evenodd" d="M720.3,1002.3s-77.1,1.9-102.9,31.1c-25.9,29.2-76.6,73.3-76.6,73.3,1.2,3.9,2.8,8.1,4.2,10.2l101.2-88.4c2.1-1.9,4.7-2.8,7.3-2.8l140.3-3.8c-1.1-6.3-.9-12.8.8-19.3h-15.9c-8.2,23.2-37,30.8-58.4-.2h0Z"/>
+        <path fill="#fc9b72" d="M478,1017.3s212.5-13.1,227.4-14.1h.2c.8-.1,1-.4.6-1l-225.7-.6c-.9,4.3-1.9,9.8-2.5,15.7h0Z"/>
+      </g>
+    </g>
+  </symbol>
+    <symbol id="chOut" viewBox="430 480 1010 840">
+    
+    <g>
+      <g>
+        <path fill="#1a1a1a" d="M670.7,979.3c4-11.7,10.9-18.7,18.3-22.8-67.3,2.8-161.6-11.1-168-87.8-6.4-75.8,66-189.5,153.9-218.9,12.6-20.2,97.6-149.5,199.9-141.4,47.2,3.7,52.5,55.5,47.8,99.6,0,0,307.5-248.7,427.9,246.7h0c9.9,28.5,16.5,58.6,19.3,90l26.4-.6c6.9-.2,12.4,5.7,11.6,12.8l-4.6,51.4c-1.2,14-24.1,11.5-33.8,12.2-31.5,341-446.1,357.2-446.1,152.9s116.6-154.5,193.5-94.9c11.4,8.8-1,26.4-13.1,18.8h0c-39.9-24.9-93.6,3.3-93.6,52.1,0,109.7,154.6,71.7,195-19.3,12-27,14.3-59.3.6-95.1l-36.7,1.1c-13.1,20.3-31.7,23.5-31.8,23.5-35.9,7.3-61.6-2-76.5-17.1l-150.5-1.5c-3.2,5.7-6.7,10.6-10.6,14.7-29.8,31.8-75.6,17.4-96.1-11.1l-145.4,4-102.8,89.8c-1.7,1.5-4,2.6-6.5,2.8-23.4,2.1-32.9-37.8-32.9-37.9h0c-.9-3.7,0-7.8,2.8-10.7l41.6-43.1-88.6,14.9h0c-5.1.8-10.4-1.9-12.4-6.9-11.3-26.9.9-70.2,1-70.4,1.3-4.9,5.8-8.4,11.1-8.4l199.3.6h0Z"/>
+        <path fill="#fff" d="M1045.5,1003.8l-109.8,1.2c-3.5,4.8-6.7,9.3-9.7,13.3l121.3,1.2c-1.4-5.2-2-10.5-1.7-15.7h0Z"/>
+        <path fill="#fff" d="M1178.7,1012.9l16.3-.5c-3.8-6.9-8.3-13.8-13.4-20.9-.3,8-1.4,15.1-2.9,21.4h0Z"/>
+        <polygon fill="#fff" points="1370.9 997.4 1381.2 996.6 1383.8 967.3 1371.1 967.7 1370.9 997.4"/>
+        <path fill="#fff" d="M778.7,1002.5c-8.2,23.3-37,30.9-58.4-.1l-239.9-.7c-2,9.5-4.5,25.4-2.3,38.3l112.8-19c10.8-1.8,18.1,11.4,9.9,19.6l-60.9,63.2c1.4,4.6,3.3,10.5,5.1,13.1l101.2-88.4c2.1-1.9,4.7-2.8,7.3-2.8l140.3-3.8c-1.1-6.3-.9-12.8.8-19.3h-15.9c0,0,0,0,0,0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M751.4,981.4c-13.5-6.9-2.9-27.3,10.5-20.4,8.8,4.6,14.2,11.3,16.9,18.6h29.4c2.9-2.7,6-5,9.5-6.9-18.2-8.1-34.6-17.6-44.3-23.5-10.4,1.3-39.2,5.9-46.3,18.8-6.6,11.9-18.4-.3-30.1,11.5l32.1.3c3.8.8,5.9,2.7,7.6,5.5,12.4,20.9,20.3,16.2,21.1,6.9.3-3.8-1.5-8-6.3-10.5h0Z"/>
+        <path fill="#fff" d="M814.5,907.7c13.8-5.9,22.9,15.1,9.1,21.1-7.2,3.1-15.3,6.1-24.3,8.9,15.5,8.7,36.7,19.2,56.1,24.2l18.3-32.3-24.9-36.1c-8.6-12.4,10.3-25.5,18.9-13l29,42c2.6,3.7,2.6,8.5.5,12.2l-29.4,51.9c-2.8,5-8.7,7-13.9,5.1-37.3-13.6-55.5,35.9-12.4,55.2,22.5,10,41.1.2,51.1-22l28.5-38.7c17.8-24.4,37.4-52.9,37.4-61.7,0-17.6-28.6-60.5-47.1-73.1-12.5-8.5.4-27.5,12.9-19,24.4,16.6,57.2,66.3,57.2,92s-14.2,34.4-29.7,57.5l101-1c5.6-8.7,14.3-15.8,26.1-19.7-29.9-82.8,58.1-179.7,142.1-105.6,11.3,10-3.9,27.2-15.2,17.2-73.8-65.2-141.2,40.5-93.8,101.2,9.3,11.9-8.8,26-18.1,14.1-1.6-2-3-4-4.4-6.1-38.2,9.5-25.1,68.7,43.6,55.1,0,0,10.5-1.7,18.2-14.9.4-1.7,1.2-3.3,2.3-4.7,5-11.4,7.8-29.4,3.3-57.7-2.5-11.6-2.9-16.6-7-31.6-4-14.5,18.1-20.7,22.1-6.1l5.3,21.9c163.4,176.5-37.9,328.3-139.6,288.9-29.9-11.6-50.6-38.3-50.6-83.4s15.2-56.2,39.8-71.4c-46.2,8.3-80.5,46.9-80.5,95.4,0,179.9,401.9,155.9,401.9-194.7s-48.7-204.8-123.8-269.1c-25.8,50.2-86.3,65.7-86.3,65.7,26.2-35.5,30.1-81.5,30.2-105.1-36.1-20.5-75.9-34.9-117.8-41.7,15.3,86.7-43.8,159.3-43.8,159.3,17-76.3-10.5-138-25-163.7-20.7.7-41.6,3.3-62.7,7.8-3.4,19.5-8.4,40-14.3,60.5-23.9,83-64.2,167.3-74.8,175.7-11.8,9.3-26-8.7-14.2-18,8.6-6.8,44.1-84.8,66.9-164,9.7-33.8,41.2-151.1-9.8-155.1-72.9-5.7-138.3,72.8-166,111.8,22.6-1.9,45.6,2.4,68.2,14.7,13.3,7.2,2.3,27.4-11,20.1-101.2-55.2-220.5,94.5-217.4,183.8,1.4.6,69.7,27.1,136.3,26.2,0,0-50.4,17.7-132.6-4.2,3.9,11.7,10.9,21.4,21.6,28.3,60.1,38.6,187.9,19.5,242.4-4.1h0Z"/>
+        <circle fill="#1a1a1a" cx="707.1" cy="770.8" r="89.8"/>
+        <circle fill="#fff" cx="707.1" cy="770.8" r="73.3"/>
+        <circle fill="#1a1a1a" cx="689.5" cy="757.1" r="42.5"/>
+        <circle fill="#fff" cx="686.7" cy="736.6" r="15.2"/>
+        <path fill="#fff" d="M719,743.6c1.9,4.1,2.9,8.7,2.9,13.5,0,17.9-14.5,32.4-32.4,32.4s-28.5-10.9-31.6-25.5c5.1,11.2,16.4,18.9,29.4,18.9s32.4-14.5,32.4-32.4-.3-4.7-.7-6.9h0Z"/>
+        <path fill="#fff" d="M952.2,605.2s246.5-39.1,360.7,185.8c0,0-80-339.7-360.7-185.8h0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M911.2,923.5c-58.2-72.2.2-72.2.2-72.2-12.5-8.5.4-27.5,12.9-19,24.4,16.6,57.2,66.3,57.2,92s-14.2,34.4-29.7,57.5l101-1c5.6-8.7,14.3-15.8,26.1-19.7-9.4-26.2-7.1-53.8,3.1-76.9-179.2.8-175-199.5-175-199.5-.7,2.7-1.5,5.3-2.2,8-23.9,83-64.2,167.3-74.8,175.7-11.8,9.3-26-8.7-14.2-18,7.4-5.9,35-65.2,57.1-132.4-75.4,222.8-239.2,198.6-243.3,190.9-3.4-6.5,34.1-16.2,45.1-18.9-17.5,3.9-61.7,10.2-124.4-6.4,3.9,11.7,10.9,21.4,21.6,28.3,60.1,38.6,187.9,19.5,242.4-4.1,13.8-5.9,22.9,15.1,9.1,21.1-7.2,3.1-15.3,6.1-24.3,8.9,15.5,8.7,36.7,19.2,56.1,24.2l18.3-32.3-24.9-36.1c-8.6-12.4,10.3-25.5,18.9-13l29,42c2.6,3.7,2.6,8.5.5,12.2l-29.4,51.9c-.4.7-.8,1.3-1.3,1.9,22.2-19.7,44.7-64.8,44.7-64.8h0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M1177.3,944c163.4,176.5-37.9,328.3-139.6,288.9-29.9-11.6-50.6-38.3-50.6-83.4s2.7-24.5,7.6-35.2c-85.9,133.6,164.7,208,248.2,45.9,62.2-120.7-3-310.5-97.4-263.3-20.6,10.3,45.7,165.6-67.7,130.2,10.1,9.6,28.4,15.4,55.2,10,0,0,10.5-1.7,18.2-14.9.4-1.7,1.2-3.3,2.3-4.7,5-11.4,7.8-29.4,3.3-57.7-2.5-11.6-2.9-16.6-7-31.6-4-14.5,18.1-20.7,22.1-6.1l5.3,21.9h0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M952.2,605.2s246.5-39.1,360.7,185.8c0,0-8.5-36.2-29.8-79.6-142.9-162.8-330.9-106.2-330.9-106.2h0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M558.3,865.8c-5-8.5,38.5-222.3,205.4-188.2-101.1-54.4-220,94.9-216.8,184.1.3.1,4.5,1.7,11.5,4.1h0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M714.4,642.6c32.1-41.1,90-100.5,153.9-95.5,48.7,3.8,22.1,111.2,11.2,150.2,1.1-3.7,2.2-7.3,3.3-10.9,9.7-33.8,41.2-151.1-9.8-155.1-72.9-5.7-138.3,72.8-166,111.8,2.5-.2,5-.3,7.5-.4Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M1212.8,727.7c123.5,112.8,190,394.1-33.2,536.2,88.6-37.3,168.6-128.7,168.6-285.1s-48.7-204.8-123.8-269.1c-3.4,6.5-7.3,12.5-11.6,17.9h0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M1053,651.1c36.5,6.6,76.3,19.4,114.1,42.4.9-8.8,1.2-16.8,1.3-23-36.1-20.5-75.9-34.9-117.8-41.7,1.3,7.6,2.1,15.1,2.4,22.4Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M992,644.7c-3.6-8.2-7.2-15.1-10.2-20.4-20.7.7-41.6,3.3-62.7,7.8-1,5.7-2.1,11.5-3.4,17.4,0,0,31.1-6.2,76.2-4.8h0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M952.2,605.2s208.5-110.2,330.9,106.2c-43.9-89.6-141.9-209.9-330.9-106.2Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M1118.7,973.9c-42-49.9,1-158.1,88.9-99.8-.6-.4-1.3-.8-1.9-1.4-73.8-65.2-141.2,40.5-93.8,101.2,9.3,11.9-8.8,26-18.1,14.1-1.6-2-3-4-4.4-6.1-5,1.3-3.4-5.4-12.4,6.1-9.1,11.5,78.2,29.2,41.7-14.2h0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M874.5,1030.6c-8.4,12.6-45.8,9.7-57.2-10.1,2.2,9.8,9.8,19.8,24.3,26.3,22.5,10,41.1.2,51.1-22l28.5-38.7c17.8-24.4,37.4-52.9,37.4-61.7,0-17.6-28.6-60.5-47.1-73.1,0,0,46.2,55.6,29.5,87-16.6,31.3-57.2,78.5-66.5,92.4h0Z"/>
+        <path fill="#fff" fill-rule="evenodd" d="M720.3,1002.3s-77.1,1.9-102.9,31.1c-25.9,29.2-76.6,73.3-76.6,73.3,1.2,3.9,2.8,8.1,4.2,10.2l101.2-88.4c2.1-1.9,4.7-2.8,7.3-2.8l140.3-3.8c-1.1-6.3-.9-12.8.8-19.3h-15.9c-8.2,23.2-37,30.8-58.4-.2h0Z"/>
+        <path fill="#fff" d="M478,1017.3s212.5-13.1,227.4-14.1h.2c.8-.1,1-.4.6-1l-225.7-.6c-.9,4.3-1.9,9.8-2.5,15.7h0Z"/>
+      </g>
+    </g>
+  </symbol>
+  </defs>
+</svg>
+
+<!-- ============ SEITE 1: QUIZ ============ -->
+<div class="page">
+  <div class="bubble" style="width:22mm;height:22mm;background:var(--hellblau);top:6mm;right:30mm"></div>
+  <div class="bubble" style="width:15mm;height:15mm;background:#C5E1A5;top:18mm;right:20mm"></div>
+
+  <!-- versteckte Chamäleons (6 Stück + Logo = 7) -->
+  <svg class="ch" style="width:15mm;height:12.5mm;top:9mm;right:13mm;transform:rotate(12deg)"><use href="#ch"/></svg>
+  <svg class="ch" style="width:9mm;height:7.5mm;top:118mm;left:5mm;transform:rotate(-90deg)"><use href="#ch"/></svg>
+  <svg class="ch" style="width:10mm;height:8.4mm;top:147mm;right:13mm;transform:scaleX(-1);z-index:2"><use href="#ch"/></svg>
+  <svg class="ch" style="width:8mm;height:6.7mm;top:228mm;left:105mm;transform:rotate(180deg);z-index:2"><use href="#ch"/></svg>
+  <svg class="ch" style="width:12mm;height:10mm;top:268mm;left:45mm;transform:rotate(-15deg);z-index:2"><use href="#ch"/></svg>
+  <svg class="ch" style="width:9mm;height:7.5mm;bottom:3mm;left:95mm;transform:scaleX(-1) rotate(8deg)"><use href="#ch"/></svg>
+
+  <div class="head">
+    <svg class="logo"><use href="#ch"/></svg>
+    <div class="brand">
+      <div class="name">Paderkinderleben</div>
+      <div class="tag">Kindersitz Experte</div>
+      <div class="claim">Sicherheit die mitwächst!</div>
+    </div>
+  </div>
+
+  <div class="title">
+    <h1>Chamäleon-Check: Wie sicher fährt dein Kind?</h1>
+    <div class="sub">Kreuz die richtige Antwort an. Die grünen Buchstaben ergeben das Lösungswort.</div>
+  </div>
+
+  <div class="qs">
+    <div class="q"><h3><span class="n">1</span>Bis wann muss ein Kind im Kindersitz fahren?</h3>
+      <ul>
+        <li>Bis 6 Jahre <b>K</b></li>
+        <li>Bis 12 Jahre oder 150 cm, je nachdem, was zuerst erreicht ist <b>S</b></li>
+        <li>Bis 10 Jahre <b>T</b></li>
+      </ul></div>
+    <div class="q"><h3><span class="n">2</span>Wie lange sollte ein Kind rückwärts fahren?</h3>
+      <ul>
+        <li>Bis es frei sitzen kann <b>O</b></li>
+        <li>Nur im ersten Lebensjahr <b>U</b></li>
+        <li>So lange wie möglich: Pflicht mind. bis 15 Monate (i-Size), empfohlen bis 4 bis 6 Jahre <b>I</b></li>
+      </ul></div>
+    <div class="q"><h3><span class="n">3</span>Darf die dicke Winterjacke im Kindersitz anbleiben?</h3>
+      <ul>
+        <li>Ja, Hauptsache warm <b>L</b></li>
+        <li>Nein. Jacke aus, Decke oder Jacke verkehrt herum drüberlegen <b>C</b></li>
+        <li>Nur bei kurzen Fahrten <b>M</b></li>
+      </ul></div>
+    <div class="q"><h3><span class="n">4</span>Wie fest muss der Gurt sitzen?</h3>
+      <ul>
+        <li>So fest, dass sich am Schlüsselbein keine Gurtfalte mehr greifen lässt <b>H</b></li>
+        <li>Eine Hand breit Luft lassen <b>N</b></li>
+        <li>Locker, damit es bequem ist <b>P</b></li>
+      </ul></div>
+    <div class="q"><h3><span class="n">5</span>Babyschale auf dem Beifahrersitz?</h3>
+      <ul>
+        <li>Immer erlaubt <b>A</b></li>
+        <li>Niemals erlaubt <b>D</b></li>
+        <li>Nur mit ausgeschaltetem Beifahrer-Airbag <b>E</b></li>
+      </ul></div>
+    <div class="q"><h3><span class="n">6</span>Wann ist der nächste Sitz dran?</h3>
+      <ul>
+        <li>Am 1. Geburtstag <b>G</b></li>
+        <li>Immer nach Angabe des Kindersitzes (Größe und Gewicht). Bei der Babyschale, wenn der Kopf nur noch 2 cm unter dem Schalenrand endet <b>R</b></li>
+        <li>Wenn das Kind quengelt <b>W</b></li>
+      </ul></div>
+  </div>
+
+  <div class="solve">
+    <div class="box">
+      <h4>Lösungswort</h4>
+      <div class="letters"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+    </div>
+    <div class="box kids">
+      <h4>Für die Kinder 🔍</h4>
+      <p>Wie viele Chamäleons haben sich auf dieser Seite versteckt?</p>
+      <div class="count">Ich finde <span></span></div>
+    </div>
+  </div>
+
+  <div class="reward">Lösungswort und Chamäleon-Zahl am Stand sagen und Überraschung abholen!
+    <small>Fragen zum Kindersitz? Wir beraten dich gern im Laden.</small></div>
+
+  <div class="foot">
+    <div>Mo · Di · Do · Fr 9–18 Uhr &nbsp;·&nbsp; Mi 9–15 Uhr</div>
+    <div class="web">www.paderkinderleben.de</div>
+  </div>
+</div>
+
+<!-- ============ SEITE 2: AUSMALBILD ============ -->
+<div class="page back">
+  <div class="top">
+    <h2>Mal mich bunt an!</h2>
+    <div class="lead">Chamäleons können ihre Farbe ändern. Welche Farbe gibst du mir?</div>
+  </div>
+  <div class="frame">
+    <svg style="width:180mm;height:150mm"><use href="#chOut" width="100%" height="100%"/></svg>
+  </div>
+  <div class="name">Ich heiße: <span></span></div>
+  <div class="foot">
+    <div>Paderkinderleben · Kindersitz Experte · <span style="color:var(--gruen)">Sicherheit die mitwächst!</span></div>
+    <div class="web">www.paderkinderleben.de</div>
+  </div>
+</div>
+</body>
+</html>
