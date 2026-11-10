@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Aushang Messebesuch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blau: #1B4FA3;
+    --navy: #1F2A44;
+    --gruen: #7CB342;
+    --gruen-hell: #EEF6E3;
+    --hellblau: #A9CBEA;
+    --hellblau-bg: #EDF4FB;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; background: #fff; }
+  body { font-family: "Nunito", "Helvetica Neue", Arial, sans-serif; color: var(--blau); font-weight: 700; }
+  .page { position: relative; width: 210mm; height: 297mm; padding: 12mm 15mm 10mm; display: flex; flex-direction: column; overflow: hidden; }
+
+  .bubble { position: absolute; border-radius: 50%; opacity: .55; z-index: 0; }
+  .b1 { width: 26mm; height: 26mm; background: var(--hellblau); top: 8mm; right: 42mm; }
+  .b2 { width: 18mm; height: 18mm; background: #C5E1A5; top: 22mm; right: 30mm; }
+  .b3 { width: 16mm; height: 16mm; border: 0.5mm solid var(--hellblau); top: 5mm; right: 22mm; opacity: .9; }
+  .b4 { width: 34mm; height: 34mm; background: #C5E1A5; bottom: 30mm; left: -10mm; opacity: .35; }
+  .b5 { width: 20mm; height: 20mm; background: var(--hellblau); bottom: 52mm; left: 14mm; opacity: .3; }
+  .page > *:not(.bubble) { position: relative; z-index: 1; }
+
+  .brand .name { font-size: 12mm; font-weight: 900; line-height: 1; }
+  .brand .tag { font-size: 6mm; font-weight: 800; margin-top: 1mm; }
+  .brand .claim { font-size: 5.5mm; font-weight: 800; color: var(--gruen); margin-top: 1mm; }
+
+  .title { margin-top: 9mm; background: var(--blau); color: #fff; border-radius: 6mm; padding: 6mm 8mm; text-align: center; }
+  .title h1 { font-size: 15mm; font-weight: 900; line-height: 1.05; }
+  .title .sub { font-size: 7mm; font-weight: 800; color: #DCEBF7; margin-top: 2mm; }
+
+  .days { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 9mm; }
+  .card { border-radius: 6mm; padding: 7mm 5mm; text-align: center; }
+  .card .wd { font-size: 9mm; font-weight: 900; line-height: 1; }
+  .card .date { font-size: 7mm; font-weight: 800; margin-top: 1.5mm; }
+  .card .state { margin-top: 6mm; font-size: 11mm; font-weight: 900; line-height: 1.05; border-radius: 4mm; padding: 4mm 2mm; }
+  .card .note { margin-top: 3mm; font-size: 5mm; font-weight: 700; color: #5B7FB8; }
+  .zu { border: 1.4mm solid var(--blau); }
+  .zu .state { background: var(--blau); color: #fff; }
+  .auf { border: 1.4mm solid var(--gruen); }
+  .auf .state { background: var(--gruen-hell); color: var(--blau); }
+  .auf .state small { display: block; font-size: 6mm; font-weight: 800; margin-bottom: 1mm; color: var(--gruen); }
+
+  .why { margin-top: 9mm; text-align: center; font-size: 6.6mm; line-height: 1.4; font-weight: 700; color: var(--navy); }
+  .why strong { color: var(--blau); font-weight: 900; }
+
+  .normal { margin-top: auto; border: 0.6mm solid var(--blau); border-radius: 4mm; padding: 4mm 5mm; }
+  .normal .nt { font-size: 5mm; font-weight: 900; text-align: center; margin-bottom: 3mm; }
+  .normal .row { display: flex; justify-content: center; gap: 3mm; flex-wrap: wrap; }
+  .normal .day { display: flex; align-items: center; gap: 1.5mm; font-size: 4.6mm; }
+  .normal .hv { font-weight: 900; background: var(--gruen-hell); border-radius: 2mm; padding: 0.8mm 2.5mm; white-space: nowrap; }
+
+  .foot { display: flex; justify-content: space-between; align-items: center; margin-top: 5mm; padding-top: 3mm; border-top: 0.5mm solid var(--hellblau); font-size: 5mm; font-weight: 800; }
+  .foot .web { color: var(--gruen); font-weight: 900; font-size: 5.5mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div>
+  <div class="bubble b4"></div><div class="bubble b5"></div>
+
+  <div class="brand">
+    <div class="name">Paderkinderleben</div>
+    <div class="tag">Kindersitz Experte</div>
+    <div class="claim">Sicherheit die mitwächst!</div>
+  </div>
+
+  <div class="title">
+    <h1>Geänderte<br>Öffnungszeiten</h1>
+    <div class="sub">Wir sind auf der Messe für euch unterwegs!</div>
+  </div>
+
+  <div class="days">
+    <div class="card zu">
+      <div class="wd">Donnerstag</div>
+      <div class="date">12.11.</div>
+      <div class="state">geschlossen</div>
+      <div class="note">ganztägig</div>
+    </div>
+    <div class="card auf">
+      <div class="wd">Freitag</div>
+      <div class="date">13.11.</div>
+      <div class="state"><small>nur nachmittags</small>15 – 18 Uhr</div>
+      <div class="note">vormittags geschlossen</div>
+    </div>
+  </div>
+
+  <div class="why">
+    Ich schaue mir auf der Messe die <strong>Neuheiten</strong> an,<br>
+    damit ich euch weiterhin <strong>echt gut beraten</strong> kann.<br>
+    Danke für euer Verständnis!
+  </div>
+
+  <div class="normal">
+    <div class="nt">Ab Samstag, 14.11., wieder wie gewohnt:</div>
+    <div class="row">
+      <div class="day">Mo <span class="hv">15–18</span></div>
+      <div class="day">Di <span class="hv">10–17</span></div>
+      <div class="day">Do <span class="hv">9–13</span></div>
+      <div class="day">Fr <span class="hv">9–12 · 15–18</span></div>
+      <div class="day">Sa <span class="hv">9–14</span></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>Bis bald im Laden!</div>
+    <div class="web">www.paderkinderleben.de</div>
+  </div>
+</div>
+</body>
+</html>
