@@ -188,10 +188,10 @@ def front(c):
     draw_chameleon(c, 75, 60 - ch_height(cw) / 2 + 1, cw)
     # Text
     text(c, 9, 77, "Gewinnspiel", "Rund", 37, BLAU)
-    rect(c, 9, 61.5, 66, 10, GRUEN, r=5)
+    rect(c, 9, 61.5, 66, 10, GRUEN)
     text(c, 42, 64.6, "Mitmachen und gewinnen!", "Rund", 12.5, WEISS, "c")
     y = 52
-    for line in ("Karte ausfüllen,", "bei uns im Laden abgeben", "und Daumen drücken."):
+    for line in ("Karte ausfüllen,", "bei uns abgeben", "und Daumen drücken."):
         text(c, 9, y, line, "TextB", 10.5, NAVY); y -= 5.6
     # Fußband
     rect(c, -B, -B, W + 2 * B, 17 + B, BLAU)
