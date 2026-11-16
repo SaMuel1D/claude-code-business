@@ -55,6 +55,7 @@ Claude sollte sich immer über `/prime` am Session-Start orientieren, dann mit v
 | `outputs/`   | Deliverables, Analysen, Reports, Session-Logs aus `/shutdown`.                               |
 | `reference/` | Hilfreiche Dokumentation, Vorlagen und Patterns für verschiedene Workflows.                  |
 | `scripts/`   | Automatisierungs- und Tooling-Skripte.                                                       |
+|              | `gewinnspielkarte.py [beschnitt_mm] [ausgabe.pdf]` erzeugt die Gewinnspielkarte (DIN A6 quer, zweiseitig, CMYK-Druck-PDF mit Chamäleon). Texte stehen direkt im Skript. |
 | `content-ideen/` | Alle Content- und Business-Ideen (Reels, Stories, Karussells, Produktideen). Zentrale Ideensammlung, jederzeit erweiterbar. |
 
 ---
