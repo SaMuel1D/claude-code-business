@@ -56,6 +56,7 @@ Claude sollte sich immer über `/prime` am Session-Start orientieren, dann mit v
 | `reference/` | Hilfreiche Dokumentation, Vorlagen und Patterns für verschiedene Workflows.                  |
 | `scripts/`   | Automatisierungs- und Tooling-Skripte.                                                       |
 |              | `gewinnspielkarte.py [beschnitt_mm] [ausgabe.pdf]` erzeugt die Gewinnspielkarte (DIN A6 quer, zweiseitig, CMYK-Druck-PDF mit Chamäleon). Texte stehen direkt im Skript. |
+|              | `kassenbericht_a4.py [ausgabe.xlsx]` und `kassenbericht_a4_pdf.py [ausgabe.pdf]` erzeugen die Kassenbericht-Vorlage, die eine DIN-A4-Seite (quer) komplett ausfüllt (15 Zeilen, Excel mit Endbestand-Formel bzw. druckfertige PDF). |
 | `content-ideen/` | Alle Content- und Business-Ideen (Reels, Stories, Karussells, Produktideen). Zentrale Ideensammlung, jederzeit erweiterbar. |
 
 ---
